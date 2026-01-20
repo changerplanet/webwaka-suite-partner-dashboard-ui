@@ -1,0 +1,11 @@
+{
+  "moduleId": "webwaka_suite_partner_dashboard_ui",
+  "class": "suite",
+  "version": "0.1.0",
+  "capabilities": [],
+  "dependencies": [],
+  "metadata": {
+    "repository": "https://github.com/changerplanet/webwaka-suite-partner-dashboard-ui",
+    "created": "2026-01-20"
+  }
+}
