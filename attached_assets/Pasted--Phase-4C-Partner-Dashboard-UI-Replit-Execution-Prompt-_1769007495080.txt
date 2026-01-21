@@ -1,0 +1,162 @@
+
+🔒 Phase 4C — Partner Dashboard UI (Replit Execution Prompt)
+
+CONTEXT (READ CAREFULLY — NON-NEGOTIABLE)
+
+You are implementing Phase 4C — WebWaka Partner Dashboard UI.
+
+This phase MUST comply with the WebWaka Ecosystem Constitution v1.5+ and the Universal Package Installability Enforcement Rule.
+
+🚨 GitHub-based dependency installation is PERMANENTLY PROHIBITED.
+🚨 SSH-based installs MUST NOT be attempted.
+
+All canonical control packages are now published to the npm registry under the @webwaka/* scope and MUST be installed from npm only.
+
+If you attempt to install any dependency from GitHub (HTTPS or SSH), that is a constitutional violation.
+
+⸻
+
+🔑 ABSOLUTE INSTALLATION RULE (HARD LOCK)
+
+ONLY THIS IS ALLOWED:
+
+npm install @webwaka/<package>
+
+THE FOLLOWING ARE FORBIDDEN FOREVER:
+
+npm install github:changerplanet/...
+npm install https://github.com/...
+npm install git@github.com:...
+
+If any GitHub install is attempted → STOP IMMEDIATELY AND REPORT.
+
+⸻
+
+🎯 OBJECTIVE
+
+Implement the Partner Dashboard UI as a pure declarative consumer of canonical control packages.
+
+The UI:
+	•	❌ Must NOT contain control logic
+	•	❌ Must NOT define permissions, entitlements, or feature flags
+	•	❌ Must NOT resolve access locally
+	•	✅ Must ONLY consume canonical control engines
+	•	✅ Must be deterministic
+	•	✅ Must be Nigeria-first (₦ only)
+	•	✅ Must build and deploy cleanly
+
+⸻
+
+📦 REQUIRED CANONICAL DEPENDENCIES (npm ONLY)
+
+Install exactly the following packages from npm:
+
+npm install \
+  @webwaka/core-dashboard-control \
+  @webwaka/core-permissions \
+  @webwaka/core-entitlements \
+  @webwaka/core-feature-flags \
+  @webwaka/core-branding \
+  @webwaka/suite-partner-dashboard-control
+
+🚫 Do NOT install any GitHub URLs
+🚫 Do NOT substitute package names
+🚫 Do NOT vendor code locally
+
+⸻
+
+🧱 ARCHITECTURAL REQUIREMENTS (MANDATORY)
+
+1️⃣ Single Control Consumer Pattern
+
+Create one and only one file:
+
+src/lib/control-consumer.ts
+
+This file:
+	•	Is the ONLY place that imports @webwaka/* control packages
+	•	Re-exports resolved data for the UI
+	•	Contains NO business logic
+
+🚫 No other file may import control packages.
+
+⸻
+
+2️⃣ Server-Side Resolution ONLY
+	•	All calls to:
+	•	resolveDashboard
+	•	generateDashboardSnapshot
+	•	verifyDashboardSnapshot
+	•	MUST happen server-side (Next.js server components)
+
+Client components:
+	•	Receive pre-resolved data only
+	•	Render based on .visible flags
+	•	Perform zero access checks
+
+⸻
+
+3️⃣ Determinism (REQUIRED)
+	•	No Date.now()
+	•	No Math.random()
+	•	All evaluation times must be explicit
+	•	Same input → same output (prove with tests)
+
+⸻
+
+4️⃣ Nigeria-First Enforcement
+	•	Currency display: ₦ (NGN) ONLY
+	•	$, USD, EUR, GBP are forbidden
+	•	Add tests that fail if non-₦ currency appears
+
+⸻
+
+5️⃣ CI / Build Integrity
+	•	npm test MUST fail loudly on error
+	•	npm run build MUST pass
+	•	No masked commands (|| true, echo "skip")
+
+⸻
+
+🧪 REQUIRED TEST PROOF
+
+You MUST include tests proving:
+	•	Dashboard visibility changes when control inputs change
+	•	Determinism (10× identical evaluations)
+	•	No UI file imports control packages except control-consumer.ts
+	•	Snapshot integrity verification
+	•	Nigeria-first currency enforcement
+
+⸻
+
+⛔ HARD STOP CONDITIONS
+
+⛔ If npm tries to use SSH
+⛔ If any GitHub URL is used
+⛔ If control logic appears in UI
+⛔ If more than one control consumer exists
+
+→ STOP AND REPORT IMMEDIATELY
+
+⸻
+
+✅ COMPLETION CRITERIA
+
+You may declare completion ONLY when:
+	•	All dependencies install via npm registry
+	•	Build passes
+	•	Tests pass
+	•	UI is a pure consumer
+	•	No GitHub installs attempted
+
+⸻
+
+ACKNOWLEDGEMENT FORMAT (REQUIRED)
+
+Reply only with:
+
+“Phase 4C acknowledged. Proceeding using npm registry packages only and following all constitutional constraints.”
+
+Then execute.
+
+⸻
