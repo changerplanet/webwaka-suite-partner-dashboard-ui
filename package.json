@@ -2,7 +2,19 @@
   "name": "webwaka-suite-partner-dashboard-ui",
   "version": "0.1.0",
   "description": "WebWaka suite module",
+  "type": "module",
   "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5000",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo 'No tests yet' && exit 0"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.5"
   }
 }
