@@ -1,0 +1,175 @@
+
+🔓 Phase 4C — Partner & Tenant Dashboards (Replit Execution Prompt)
+
+CONTEXT (READ CAREFULLY)
+
+You are executing Phase 4C of the WebWaka platform.
+
+This phase is UI-only and must strictly follow the WebWaka Ecosystem Constitution v1.5+.
+
+⚠️ Critical platform update already completed
+All canonical control packages are now:
+	•	✅ Public
+	•	✅ HTTPS-installable (NO SSH)
+	•	✅ Include pre-built dist/ artifacts
+	•	✅ Verified installable in Replit, Vercel, and CI
+
+🚫 SSH-based installs are constitutionally forbidden.
+🚫 Local control logic is forbidden.
+
+⸻
+
+TARGET REPOSITORY (IMMUTABLE)
+
+Repository:
+changerplanet/webwaka-suite-partner-dashboard-ui
+
+Platform:
+👉 Replit
+
+This repository already exists and must be used as-is.
+
+⸻
+
+🚨 HARD CONSTRAINTS (NON-NEGOTIABLE)
+
+You MUST NOT:
+	•	❌ Add or reimplement control logic locally
+	•	❌ Add permissions, entitlements, roles, or feature flags in UI
+	•	❌ Use SSH-based GitHub installs
+	•	❌ Bypass canonical control packages
+	•	❌ Add demo, fake, or placeholder business logic
+	•	❌ Proceed if dependency installation fails
+
+If any blocker occurs → STOP and REPORT
+
+⸻
+
+📦 CANONICAL DEPENDENCIES (MANDATORY)
+
+Install dependencies via HTTPS only:
+
+npm install https://github.com/changerplanet/webwaka-core-dashboard-control.git
+npm install https://github.com/changerplanet/webwaka-suite-partner-dashboard-control.git
+
+If either fails:
+⛔ STOP immediately
+⛔ Report exact error output
+⛔ Do NOT proceed
+
+⸻
+
+🧠 ARCHITECTURE RULES (MANDATORY)
+
+1️⃣ Single Control Consumer Pattern
+
+Create or ensure existence of:
+
+src/lib/control-consumer.ts
+
+This file must be the ONLY place that imports:
+	•	webwaka-core-dashboard-control
+	•	webwaka-suite-partner-dashboard-control
+
+No other file may import control packages directly.
+
+⸻
+
+2️⃣ Server-Side Resolution Only
+
+All dashboard resolution MUST occur server-side:
+	•	Use resolveDashboard() / suite equivalent
+	•	Use generateDashboardSnapshot() server-side only
+	•	Pass resolved data into client components as props
+
+Client components:
+	•	❌ MUST NOT import control packages
+	•	❌ MUST NOT resolve dashboards
+	•	❌ MUST NOT hash, snapshot, or evaluate
+
+⸻
+
+3️⃣ Pure Declarative UI
+
+UI components:
+	•	Render only what they are given
+	•	May filter by .visible === true
+	•	MUST NOT check permissions, entitlements, roles, or flags
+
+Example (allowed):
+
+sections.filter(s => s.visible)
+
+Example (forbidden):
+
+if (user.role === 'admin')
+if (hasPermission('x'))
+if (featureFlags.enabled)
+
+
+⸻
+
+4️⃣ Determinism & Integrity
+	•	Use explicit evaluationTime in all contexts
+	•	❌ No Date.now()
+	•	❌ No Math.random() (even cosmetic)
+	•	Snapshot checksums MUST come from canonical control packages
+
+⸻
+
+5️⃣ Build & CI Integrity (MANDATORY)
+
+Remove any masking such as:
+
+npm test || echo "skipped"
+
+Required:
+
+npm test
+npm run build
+
+Both MUST pass.
+
+⸻
+
+🔍 REQUIRED VERIFICATION BEFORE COMMIT
+
+Before pushing:
+	•	✅ npm install succeeds (HTTPS only)
+	•	✅ npm run build passes
+	•	✅ npm test passes
+	•	✅ dist/ exists inside installed control packages
+	•	✅ Only control-consumer.ts imports control logic
+	•	✅ No local /control directories exist
+	•	✅ UI contains no business logic
+
+⸻
+
+📌 FINAL OUTPUT REQUIREMENTS
+
+Your final response must include:
+	1.	✅ Confirmation of successful dependency installation
+	2.	✅ Confirmation build passes
+	3.	✅ Confirmation tests pass
+	4.	✅ Confirmation no local control logic exists
+	5.	✅ Confirmation single consumer pattern enforced
+
+⸻
+
+⛔ HARD STOP
+
+After completing Phase 4C work:
+
+⛔ STOP
+⛔ Do NOT proceed to Phase 4D
+⛔ Await explicit authorization
+
+⸻
+
+ACKNOWLEDGEMENT FORMAT (REQUIRED)
+
+Reply only with:
+
+“Phase 4C acknowledged. Proceeding on Replit with HTTPS-installed canonical control packages.”
+
+Then execute exactly as instructed.
