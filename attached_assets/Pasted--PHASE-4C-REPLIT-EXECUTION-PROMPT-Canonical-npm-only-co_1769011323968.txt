@@ -1,0 +1,182 @@
+
+✅ PHASE 4C — REPLIT EXECUTION PROMPT
+
+(Canonical, npm-only, constitutionally compliant)
+
+⸻
+
+CONTEXT (READ CAREFULLY)
+
+You are executing Phase 4C — Dashboard UI Continuation for the WebWaka ecosystem.
+
+This phase is UNBLOCKED.
+
+All canonical control packages are now published to the public npm registry under the @webwaka/* scope and MUST be consumed exclusively via npm.
+
+🚨 GitHub-based dependency installation is strictly forbidden in this phase.
+
+This is a CONTROL-CONSUMPTION PHASE, not control implementation.
+
+⸻
+
+🚫 HARD PROHIBITIONS (NON-NEGOTIABLE)
+
+DO NOT:
+	•	❌ Use github:changerplanet/...
+	•	❌ Use https://github.com/...
+	•	❌ Use SSH-based installs
+	•	❌ Reimplement control logic locally
+	•	❌ Add placeholder control logic
+	•	❌ Add demo permissions / entitlements / flags
+	•	❌ Modify canonical control packages
+
+If any npm install fails, you must STOP immediately and report the exact error.
+
+⸻
+
+✅ CANONICAL SOURCE OF TRUTH
+
+All control logic MUST flow from published npm packages only:
+
+npm install \
+  @webwaka/core-dashboard-control \
+  @webwaka/core-permissions \
+  @webwaka/core-entitlements \
+  @webwaka/core-feature-flags \
+  @webwaka/core-branding \
+  @webwaka/suite-superadmin-dashboard-control \
+  @webwaka/suite-partner-dashboard-control \
+  @webwaka/suite-tenant-dashboard-control \
+  @webwaka/suite-pos-control \
+  @webwaka/suite-svm-control
+
+📌 These packages are:
+	•	Public
+	•	Auth-free
+	•	Pre-built (dist/ included)
+	•	npm-registry hosted
+	•	Constitutionally ratified
+
+⸻
+
+🎯 PHASE 4C OBJECTIVE
+
+Extend the dashboard UI to support additional Suite dashboards (Partner, Tenant, POS, SVM) while maintaining strict constitutional compliance.
+
+The UI must remain a pure declarative consumer.
+
+⸻
+
+🧱 REQUIRED ARCHITECTURE (MANDATORY)
+
+1️⃣ Single Control Consumer
+
+Create or update:
+
+src/lib/control-consumer.ts
+
+This file must be the ONLY place that imports any @webwaka/*-control package.
+
+Example pattern (adapt, do not copy blindly):
+
+import {
+  resolveDashboard,
+  generateDashboardSnapshot,
+  evaluateFromSnapshot
+} from '@webwaka/core-dashboard-control';
+
+import {
+  resolveSuperAdminDashboard
+} from '@webwaka/suite-superadmin-dashboard-control';
+
+import {
+  resolvePartnerDashboard
+} from '@webwaka/suite-partner-dashboard-control';
+
+export {
+  resolveDashboard,
+  generateDashboardSnapshot,
+  evaluateFromSnapshot,
+  resolveSuperAdminDashboard,
+  resolvePartnerDashboard
+};
+
+🚨 No other file may import control packages directly.
+
+⸻
+
+2️⃣ Server-Side Resolution ONLY
+	•	Dashboard resolution MUST occur in server components
+	•	Snapshot generation MUST occur server-side
+	•	Client components receive pre-resolved data only
+
+✅ Allowed:
+
+// app/page.tsx (server)
+const resolved = resolvePartnerDashboard(context);
+
+❌ Forbidden:
+
+// components/Dashboard.tsx
+resolvePartnerDashboard(...)
+
+
+⸻
+
+3️⃣ UI = Pure Consumer
+
+UI components must:
+	•	Render based on .visible flags
+	•	Never check permissions, entitlements, roles, or flags
+	•	Never perform hashing or integrity checks
+	•	Never call control engines
+
+UI logic = presentation only
+
+⸻
+
+4️⃣ Determinism Rules
+	•	All evaluations must accept context.evaluationTime
+	•	❌ No Date.now()
+	•	❌ No Math.random() in control paths
+	•	Snapshot integrity must come from canonical engines
+
+(Cosmetic UI-only randomness is allowed but discouraged.)
+
+⸻
+
+5️⃣ CI / Build Integrity
+	•	npm test must fail loudly
+	•	npm run build must pass
+	•	No masked failures (|| true, echo "skip")
+
+⸻
+
+🔍 REQUIRED VERIFICATION (DO NOT SKIP)
+
+Before stopping:
+	•	✅ npm install (npm-only, no git)
+	•	✅ npm test passes
+	•	✅ npm run build passes
+	•	✅ grep confirms only control-consumer.ts imports @webwaka/*
+	•	✅ UI renders dashboards correctly
+
+⸻
+
+⛔ HARD STOP
+
+After completing Phase 4C:
+
+⛔ STOP
+⛔ Do NOT proceed to Phase 4D
+⛔ Await explicit authorization
+
+⸻
+
+ACKNOWLEDGEMENT FORMAT (MANDATORY)
+
+Reply only with:
+
+“Phase 4C acknowledged. Proceeding using npm-installed @webwaka packages only.”
+
+Then execute.

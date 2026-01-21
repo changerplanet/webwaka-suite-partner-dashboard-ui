@@ -7,7 +7,6 @@
 .dashboard {
   display: flex;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .sidebar {
@@ -31,10 +30,11 @@
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
-.nav button {
+.nav-item {
+  display: block;
   background: transparent;
   border: none;
   color: #aaa;
@@ -44,16 +44,22 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
 }
 
-.nav button:hover {
+.nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
   color: white;
 }
 
-.nav button.active {
+.nav-item.active {
   background: #4a4ae8;
   color: white;
+}
+
+.nav-item.hidden {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .main-content {
@@ -65,6 +71,9 @@
   background: white;
   padding: 20px 30px;
   border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header h1 {
@@ -101,10 +110,8 @@
   color: #1a1a2e;
 }
 
-.placeholder {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  color: #666;
+.hidden-reason {
+  font-size: 0.75rem;
+  color: #999;
+  font-style: italic;
 }
