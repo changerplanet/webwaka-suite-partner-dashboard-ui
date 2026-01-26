@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ClerkAuthProvider } from '@webwaka/core-auth-ui'
 
 export const metadata: Metadata = {
   title: 'WebWaka Partner Dashboard',
@@ -11,10 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body style={{ margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif' }}>
-        {children}
-      </body>
-    </html>
+    <ClerkAuthProvider>
+      <html lang="en">
+        <body style={{ margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif' }}>
+          {children}
+        </body>
+      </html>
+    </ClerkAuthProvider>
   )
 }

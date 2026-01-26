@@ -9,6 +9,7 @@
     "test": "node --experimental-vm-modules node_modules/vitest/vitest.mjs run"
   },
   "dependencies": {
+    "@webwaka/core-auth-ui": "github:changerplanet/webwaka-core-auth-ui#v0.1.0",
     "@webwaka/core-branding": "^0.1.0",
     "@webwaka/core-dashboard-control": "^0.1.0",
     "@webwaka/core-entitlements": "^0.1.0",

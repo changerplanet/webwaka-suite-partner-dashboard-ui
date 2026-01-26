@@ -5,6 +5,7 @@
  */
 
 import { DashboardUI } from '@/src/components/DashboardUI';
+import { RequireAuth } from '@webwaka/core-auth-ui';
 import {
   resolveDashboard,
   generateDashboardSnapshot,
@@ -116,9 +117,11 @@ export default async function PartnerDashboardPage() {
   ];
 
   return (
-    <DashboardUI
-      sections={sections}
-      title="Partner Dashboard"
-    />
+    <RequireAuth>
+      <DashboardUI
+        sections={sections}
+        title="Partner Dashboard"
+      />
+    </RequireAuth>
   );
 }
